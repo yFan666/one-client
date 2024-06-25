@@ -11,12 +11,18 @@ importers:
       '@mdi/font':
         specifier: 6.2.95
         version: 6.2.95
+      pinia:
+        specifier: ^2.1.7
+        version: 2.1.7(typescript@5.5.2)(vue@3.4.30(typescript@5.5.2))
       roboto-fontface:
         specifier: '*'
         version: 0.10.0
       vue:
         specifier: ^3.4.21
         version: 3.4.30(typescript@5.5.2)
+      vue-router:
+        specifier: '4'
+        version: 4.4.0(vue@3.4.30(typescript@5.5.2))
       vuetify:
         specifier: ^3.5.8
         version: 3.6.10(typescript@5.5.2)(vite-plugin-vuetify@2.0.3)(vue@3.4.30(typescript@5.5.2))
@@ -362,6 +368,9 @@ packages:
   '@vue/compiler-ssr@3.4.30':
     resolution: {integrity: sha512-ZJ56YZGXJDd6jky4mmM0rNaNP6kIbQu9LTKZDhcpddGe/3QIalB1WHHmZ6iZfFNyj5mSypTa4+qDJa5VIuxMSg==}
 
+  '@vue/devtools-api@6.6.3':
+    resolution: {integrity: sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==}
+
   '@vue/language-core@2.0.22':
     resolution: {integrity: sha512-dNTAAtEOuMiz7N1s5tKpypnVVCtawxVSF5BukD0ELcYSw+DSbrSlYYSw8GuwvurodCeYFSHsmslE+c2sYDNoiA==}
     peerDependencies:
@@ -551,6 +560,18 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
+  pinia@2.1.7:
+    resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+
   postcss@8.4.38:
     resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
     engines: {node: ^10 || ^12 || >=14}
@@ -683,6 +704,22 @@ packages:
 
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
+
+  vue-demi@0.14.8:
+    resolution: {integrity: sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+
+  vue-router@4.4.0:
+    resolution: {integrity: sha512-HB+t2p611aIZraV2aPSRNXf0Z/oLZFrlygJm+sZbdJaW6lcFqEDQwnzUBXn+DApw+/QzDU/I9TeWx9izEjTmsA==}
+    peerDependencies:
+      vue: ^3.2.0
 
   vue-template-compiler@2.7.16:
     resolution: {integrity: sha512-AYbUWAJHLGGQM7+cNTELw+KsOG9nl2CnSv467WobS5Cv9uk3wFcnr1Etsz2sEIHEZvw1U+o9mRlEO6QbZvUPGQ==}
@@ -939,6 +976,8 @@ snapshots:
       '@vue/compiler-dom': 3.4.30
       '@vue/shared': 3.4.30
 
+  '@vue/devtools-api@6.6.3': {}
+
   '@vue/language-core@2.0.22(typescript@5.5.2)':
     dependencies:
       '@volar/language-core': 2.3.4
@@ -1135,6 +1174,14 @@ snapshots:
 
   picomatch@2.3.1: {}
 
+  pinia@2.1.7(typescript@5.5.2)(vue@3.4.30(typescript@5.5.2)):
+    dependencies:
+      '@vue/devtools-api': 6.6.3
+      vue: 3.4.30(typescript@5.5.2)
+      vue-demi: 0.14.8(vue@3.4.30(typescript@5.5.2))
+    optionalDependencies:
+      typescript: 5.5.2
+
   postcss@8.4.38:
     dependencies:
       nanoid: 3.3.7
@@ -1261,6 +1308,15 @@ snapshots:
       sass: 1.77.6
 
   vscode-uri@3.0.8: {}
+
+  vue-demi@0.14.8(vue@3.4.30(typescript@5.5.2)):
+    dependencies:
+      vue: 3.4.30(typescript@5.5.2)
+
+  vue-router@4.4.0(vue@3.4.30(typescript@5.5.2)):
+    dependencies:
+      '@vue/devtools-api': 6.6.3
+      vue: 3.4.30(typescript@5.5.2)
 
   vue-template-compiler@2.7.16:
     dependencies:
