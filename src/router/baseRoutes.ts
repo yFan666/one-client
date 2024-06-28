@@ -2,15 +2,15 @@ import { RouteRecordRaw } from "vue-router"
 import Layout from "@/layouts/index.vue"
 export const baseRoutes: Array<RouteRecordRaw> = [
   {
-    path: '/user',
+    path: '/',
     name: 'layout',
     component: Layout,
-    meta:{
-      title: '首页',
+    redirect: '/home',
+    meta: {
+      title: '大首页',
       hidden: false,
       icon: 'xxx'
     },
-    redirect: '/user/home',
     children: [
       {
         path: 'home',
@@ -32,4 +32,14 @@ export const baseRoutes: Array<RouteRecordRaw> = [
       },
     ]
   },
+  {
+    path: '/404',
+    name: '404',
+    redirect: '/home',
+    meta: {
+      title: '大首页',
+      hidden: false,
+      icon: 'xxx'
+    }
+  }
 ]

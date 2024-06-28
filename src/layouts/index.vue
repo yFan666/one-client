@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import navigationDrawer from "@/layouts/navigation-drawer/index.vue"
-import AppBar from '@/layouts/app-bar/index.vue'
-import MainContainer from '@/layouts/main-container/index.vue'
+import navigationDrawer from "@/layouts/components/navigation-drawer/index.vue"
+import AppBar from '@/layouts/components/app-bar/index.vue'
+import MainContainer from '@/layouts/components/main-container/index.vue'
 </script>
 
 <template>
-  <app-bar />
   <navigation-drawer />
+  <app-bar />
   <main-container />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
