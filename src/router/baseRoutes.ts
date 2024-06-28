@@ -27,7 +27,7 @@ export const baseRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: '测试',
           hidden: false,
-          icon: 'xxx'
+          icon: 'xx'
         }
       },
     ]
