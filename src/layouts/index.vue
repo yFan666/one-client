@@ -5,9 +5,11 @@ import MainContainer from '@/layouts/components/main-container/index.vue'
 </script>
 
 <template>
-  <navigation-drawer />
   <app-bar />
-  <main-container />
+  <div class="main">
+    <navigation-drawer />
+    <main-container />
+  </div>
 </template>
 
 <style lang="scss" scoped>

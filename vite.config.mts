@@ -15,7 +15,7 @@ export default defineConfig({
       template: { transformAssetUrls },
     }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
-    Vuetify(),
+    Vuetify({ autoImport: true }), // 自动导入Vuetify组件
     Components(),
     ViteFonts({
       google: {
@@ -42,7 +42,10 @@ export default defineConfig({
     ],
   },
   server: {
-    open: true,
     port: 3000,
+    open: true,
+    watch: {
+      usePolling: true,
+    }
   },
 })

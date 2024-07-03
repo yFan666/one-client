@@ -10,7 +10,7 @@ const onClick = () => {
 <template>
   <v-app-bar
     class="px-3"
-    title="App bar"
+    title="劳资蜀道山"
   >
     <v-spacer></v-spacer>
     <v-btn

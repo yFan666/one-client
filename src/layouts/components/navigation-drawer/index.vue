@@ -3,79 +3,60 @@ import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const menuRoutes = ref();
+const menuRoutes = ref<any[]>([]);
 
 onMounted(() => {
-  menuRoutes.value = router.options.routes;
-  console.log(menuRoutes.value)
+  initMenuRoutes()
 });
 
-const open = ref(['Users'])
+const initMenuRoutes = () => {
+  const arr = router.options.routes;
+  console.log(arr)
+  // 表头 - children不为0
+  arr.forEach((item: any) => {
+    const menuArr: any[] = []
+    if (item.children.length > 0) {
+      // 含子路由
+      menuArr.push({ type: "subheader", ...item })
 
-const admins = ref([
-  ['Management', 'mdi-account-multiple-outline'],
-  ['Settings', 'mdi-cog-outline'],
-])
+      item.children.forEach((child: any) => {
+        menuArr.push({...child})
+      })
+    } else {
+      // 无子路由
+      menuArr.push({ type: "subheader", ...item })
+      menuArr.push({...item})
+    }
+    menuRoutes.value.push(menuArr)
+  })
 
-const cruds = ref([
-  ['Create', 'mdi-plus-outline'],
-  ['Read', 'mdi-file-outline'],
-  ['Update', 'mdi-update'],
-  ['Delete', 'mdi-delete'],
-])
+  console.log("menuRoutes.value", menuRoutes.value)
+
+}
 
 </script>
 
 <template>
-  <v-navigation-drawer :width="300">
-    <v-list-item title="My Application" subtitle="Vuetify"></v-list-item>
-    <v-divider></v-divider>
+  <v-navigation-drawer :width="222" v-model="">
+    <v-list-item title="Youli~" subtitle="one-client" height="64" />
+    <v-divider />
     <v-card
       class="mx-auto"
-      width="300"
+      max-width="300"
+      v-for="(menu, menuIdx) in menuRoutes"
+      :key="menuIdx"
     >
-      <v-list v-model:opened="open">
-        <v-list-item prepend-icon="mdi-home" title="Home"></v-list-item>
-
-        <v-list-group
-          v-for="item in menuRoutes"
-          :key="item.path"
-          :value="item.name"
-        >
-          <template #activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              prepend-icon="mdi-account-circle"
-              :title="item.meta.title"
-            />
-            <v-list-item
-              v-for="child in item.children"
-              :key="child.path"
-              :title="child.meta.title"
-              :value="child.name"
-            />
-          </template>
-
-          <v-list-group value="Admin">
-            <template v-slot:activator="{ props }">
-              <v-list-item
-                v-bind="props"
-                title="Admin"
-              ></v-list-item>
-            </template>
-
-            <v-list-item
-              v-for="([title, icon], i) in admins"
-              :key="i"
-              :prepend-icon="icon"
-              :title="title"
-              :value="title"
-            ></v-list-item>
-          </v-list-group>
-        </v-list-group>
+      <v-list
+        v-for="(item, idx) in menu"
+        :key="idx"
+      >
+        <v-list-item
+          :type="item?.type ?? ''"
+          :title="item.meta.title"
+          :value="idx"
+        />
       </v-list>
     </v-card>
-
   </v-navigation-drawer>
 </template>
 
